@@ -1,12 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
         
         <!-- Toolbar Theme -->
-    <style name="CustomToolbarStyle" parrent="Theme.AppCompat-Light.NoActionBar">
+    <style name="CustomToolbarStyle" parrent="Theme.AppCompat">
         <item name="android:background">@color/colorPrimary</item>
+        <item name="popupTheme">@style/Theme.AppCompat.Light</item>
+        <item name="colorAccent">#fff</item>
     </style>
 
     <!-- Menu Item Theme -->
