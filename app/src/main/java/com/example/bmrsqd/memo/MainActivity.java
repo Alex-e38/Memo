@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     File ordner;
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -48,15 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-
-        ordner = new File(Environment.getExternalStorageDirectory(), "Memos");
-
-
-        if (!ordner.exists()) {
-            ordner.mkdirs();
-        }
-
         int check = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (check == PackageManager.PERMISSION_DENIED) {
@@ -66,11 +56,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+        ordner = new File(Environment.getExternalStorageDirectory(), "Memos");
+
+
+        if (!ordner.exists()) {
+            ordner.mkdirs();
+        }
+
+
         editText = (EditText) findViewById(R.id.editText);
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int check = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+                if (check == PackageManager.PERMISSION_DENIED) {
+
+                    Toast.makeText(getApplicationContext(), "Zugriff auf den Speicher wird benötigt.", Toast.LENGTH_SHORT).show();
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+                }
+
+                if (!ordner.exists()) {
+                    ordner.mkdirs();
+                }
+
                 if (editText.getText().length() > 0) {
 
                     File notitzdatei = new File(ordner, "Text_" + System.currentTimeMillis() + ".txt");
@@ -88,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Kein Text", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -99,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (!ordner.exists()) {
+            ordner.mkdirs();
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_memo) {
@@ -119,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
             }
 
-        } if (id == R.id.action_about) {
+        }
+        if (id == R.id.action_about) {
             Toast.makeText(getApplicationContext(), "Bimmer 4 Life", Toast.LENGTH_SHORT).show();
         }
 
