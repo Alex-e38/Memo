@@ -3,4 +3,5 @@
     <string name="settings1_name">Memo</string>
     <string name="Button1">Speichern</string>
     <string name="about">About</string>
+    <string name="delete">Delete</string>
 </resources>

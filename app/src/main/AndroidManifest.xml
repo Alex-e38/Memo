@@ -18,11 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ViewNotes_Activity"
             android:label="Memos ansehen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".EditNotesActivity"></activity>
+
+        <activity
+            android:name=".EditNotesActivity"
+            android:label="Memo bearbeiten"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
+
     </application>
 
 </manifest>

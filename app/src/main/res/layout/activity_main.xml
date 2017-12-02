@@ -10,7 +10,8 @@
         android:id="@+id/actionbar"
         layout="@layout/actionbar"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="62dp">
+        tools:layout_editor_absoluteY="62dp"
+        tools:ignore="MissingConstraints">
 
     </include>
 

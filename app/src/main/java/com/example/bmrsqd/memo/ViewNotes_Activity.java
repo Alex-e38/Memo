@@ -36,6 +36,7 @@ public class ViewNotes_Activity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         menu.removeItem(R.id.action_memo);
+        menu.removeItem(R.id.action_delete);
         return super.onCreateOptionsMenu(menu);
     }
 

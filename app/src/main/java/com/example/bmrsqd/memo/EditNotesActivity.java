@@ -2,6 +2,10 @@ package com.example.bmrsqd.memo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,13 +21,34 @@ public class EditNotesActivity extends AppCompatActivity {
     File notefile;
 
     EditText editText2;
-    boolean isDeleted = true;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        menu.removeItem(R.id.action_memo);
+        return super.onCreateOptionsMenu(menu);
+    }
+/*
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_edit_notes);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
+        setSupportActionBar(toolbar);
+
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editText2 = (EditText) findViewById(R.id.editText2);
 
@@ -37,6 +62,7 @@ public class EditNotesActivity extends AppCompatActivity {
 
         }
     }
+
 
     @Override
     protected void onPause() {
@@ -57,5 +83,16 @@ public class EditNotesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Text kann nicht leer sein.", Toast.LENGTH_SHORT).show();
         }
         super.onPause();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_delete) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
