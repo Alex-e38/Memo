@@ -27,15 +27,9 @@ public class EditNotesActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         menu.removeItem(R.id.action_memo);
+        menu.removeItem(R.id.action_about);
         return super.onCreateOptionsMenu(menu);
     }
-/*
-    @Override
-    public boolean onPrepareOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onPrepareOptionsMenu(menu);
-    }
-*/
 
 
     @Override
