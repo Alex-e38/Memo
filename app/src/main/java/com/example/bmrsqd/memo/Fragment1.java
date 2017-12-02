@@ -1,5 +1,6 @@
 package com.example.bmrsqd.memo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toolbar;
@@ -41,6 +43,19 @@ public class Fragment1 extends Fragment {
 
 
         return contentView;
+    }
+
+    @Override
+    public void onResume() {
+
+        listView = (ListView) contentView.findViewById(R.id.listView);
+
+        arrayListSetup();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, texteliste);
+        listView.setAdapter(arrayAdapter);
+
+        super.onResume();
     }
 
     private void arrayListSetup() {
@@ -99,6 +114,16 @@ public class Fragment1 extends Fragment {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, texteliste);
         listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent editIntent = new Intent(getActivity(), EditNotesActivity.class);
+                editIntent.putExtra("EXTRA_NOTE_NEXT",texteliste.get(i));
+                editIntent.putExtra("EXTRA_NOTE_FILE",dateienliste.get(i));
+                startActivity(editIntent);
+
+            }
+        });
 
 
     }

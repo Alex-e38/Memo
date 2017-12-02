@@ -79,6 +79,8 @@ public class ViewNotes_Activity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     @Override
