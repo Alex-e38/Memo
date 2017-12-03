@@ -57,6 +57,10 @@ public class EditNotesActivity extends AppCompatActivity {
 
             editText2.setText(notetext);
 
+            //set caret/cursor behind the text
+            int textLenght = editText2.getText().length();
+            editText2.setSelection(textLenght, textLenght);
+
         }
     }
 
@@ -76,7 +80,11 @@ public class EditNotesActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        } else {
+            //set caret/cursor behind the text
+            int textLenght = editText2.getText().length();
+            editText2.setSelection(textLenght, textLenght);
+
+        } else if (editText2.getText().length() == 0){
             Toast.makeText(getApplicationContext(), "Text kann nicht leer sein.", Toast.LENGTH_SHORT).show();
         }
         super.onPause();
@@ -95,7 +103,7 @@ public class EditNotesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void deleteNote() {
+    private void deleteNote() { //delete memo function
 
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(EditNotesActivity.this);
