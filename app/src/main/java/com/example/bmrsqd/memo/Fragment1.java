@@ -57,6 +57,16 @@ public class Fragment1 extends Fragment {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, texteliste);
         listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent editIntent = new Intent(getActivity(), EditNotesActivity.class);
+                editIntent.putExtra("EXTRA_NOTE_NEXT",texteliste.get(i));
+                editIntent.putExtra("EXTRA_NOTE_FILE",dateienliste.get(i));
+                startActivity(editIntent);
+
+            }
+        });
 
         super.onResume();
     }

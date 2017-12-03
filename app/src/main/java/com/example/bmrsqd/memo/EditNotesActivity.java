@@ -1,5 +1,7 @@
 package com.example.bmrsqd.memo;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +24,8 @@ public class EditNotesActivity extends AppCompatActivity {
 
     EditText editText2;
 
+    boolean isDeleted;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -35,7 +39,6 @@ public class EditNotesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_edit_notes);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
@@ -61,7 +64,7 @@ public class EditNotesActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
 
-        if (editText2.getText().length() > 0) {
+        if (editText2.getText().length() > 0 && !isDeleted) {
 
             try {
                 OutputStream outputStream = new FileOutputStream(notefile);
@@ -85,8 +88,35 @@ public class EditNotesActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_delete) {
+            deleteNote();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteNote() {
+
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(EditNotesActivity.this);
+        dialog.setTitle("Memo löschen?");
+        dialog.setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                notefile.delete();
+                Toast.makeText(getApplicationContext(), "Memo wurde gelöscht!", Toast.LENGTH_SHORT).show();
+                isDeleted = true;
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //cancel
+            }
+        });
+
+        dialog.show();
     }
 }
