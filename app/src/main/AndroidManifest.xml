@@ -21,12 +21,12 @@
 
         <activity
             android:name=".ViewNotes_Activity"
-            android:label="Memos ansehen"
+            android:label="Memo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <activity
             android:name=".EditNotesActivity"
-            android:label="Memo bearbeiten"
+            android:label="Memo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:parentActivityName=".ViewNotes_Activity"></activity>
 

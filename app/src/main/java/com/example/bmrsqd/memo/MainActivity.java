@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.devlomi.record_view.RecordButton;
+import com.devlomi.record_view.RecordView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
         setSupportActionBar(toolbar);
+
+
+        RecordView recordView = (RecordView) findViewById(R.id.record_view);
+        RecordButton recordButton = (RecordButton) findViewById(R.id.record_button);
+
+        //IMPORTANT
+        recordButton.setRecordView(recordView);
 
 
         int check = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
