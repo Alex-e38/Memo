@@ -118,7 +118,7 @@ public class EditNotesActivity extends AppCompatActivity {
         String shareText = text;
         intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
         intent.putExtra(Intent.EXTRA_TEXT, shareText);
-        startActivity(Intent.createChooser(intent, "Share using"));
+        startActivity(Intent.createChooser(intent, "Share"));
 
     }
 
