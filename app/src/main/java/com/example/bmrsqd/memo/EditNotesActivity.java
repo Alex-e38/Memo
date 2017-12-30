@@ -111,18 +111,11 @@ public class EditNotesActivity extends AppCompatActivity {
 
     private void share() {
 
-        if (getIntent().hasExtra("EXTRA_NOTE_NEXT") && getIntent().hasExtra("EXTRA_NOTE_FILE")) {
-
-            notetext = getIntent().getStringExtra("EXTRA_NOTE_NEXT");
-            notefile = (File) getIntent().getExtras().get("EXTRA_NOTE_FILE");
-            notetext = notetext.toString();
-
-        }
-
+        String text=editText2.getText().toString();
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.setType("text/plain");
         String shareSubject = "Memo:";
-        String shareText = notetext;
+        String shareText = text;
         intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
         intent.putExtra(Intent.EXTRA_TEXT, shareText);
         startActivity(Intent.createChooser(intent, "Share using"));
