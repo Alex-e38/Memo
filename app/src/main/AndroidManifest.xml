@@ -27,7 +27,8 @@
         <activity
             android:name=".EditNotesActivity"
             android:label="Memo bearbeiten"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:parentActivityName=".ViewNotes_Activity"></activity>
 
 
     </application>

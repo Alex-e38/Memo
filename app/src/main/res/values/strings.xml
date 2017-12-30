@@ -4,4 +4,5 @@
     <string name="Button1">Speichern</string>
     <string name="about">About</string>
     <string name="delete">Delete</string>
+    <string name="share">Share</string>
 </resources>

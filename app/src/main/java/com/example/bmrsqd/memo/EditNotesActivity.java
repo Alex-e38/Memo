@@ -1,6 +1,7 @@
 package com.example.bmrsqd.memo;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,8 +45,8 @@ public class EditNotesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
         setSupportActionBar(toolbar);
 
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editText2 = (EditText) findViewById(R.id.editText2);
 
@@ -84,7 +85,7 @@ public class EditNotesActivity extends AppCompatActivity {
             int textLenght = editText2.getText().length();
             editText2.setSelection(textLenght, textLenght);
 
-        } else if (editText2.getText().length() == 0){
+        } else if (editText2.getText().length() == 0) {
             Toast.makeText(getApplicationContext(), "Text kann nicht leer sein.", Toast.LENGTH_SHORT).show();
         }
         super.onPause();
@@ -100,7 +101,32 @@ public class EditNotesActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_share) {
+            share();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void share() {
+
+        if (getIntent().hasExtra("EXTRA_NOTE_NEXT") && getIntent().hasExtra("EXTRA_NOTE_FILE")) {
+
+            notetext = getIntent().getStringExtra("EXTRA_NOTE_NEXT");
+            notefile = (File) getIntent().getExtras().get("EXTRA_NOTE_FILE");
+            notetext = notetext.toString();
+
+        }
+
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String shareSubject = "Memo:";
+        String shareText = notetext;
+        intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+        intent.putExtra(Intent.EXTRA_TEXT, shareText);
+        startActivity(Intent.createChooser(intent, "Share using"));
+
     }
 
     private void deleteNote() { //delete memo function
