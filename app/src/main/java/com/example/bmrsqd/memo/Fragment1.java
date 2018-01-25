@@ -61,7 +61,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent editIntent = new Intent(getActivity(), EditNotesActivity.class);
-                editIntent.putExtra("EXTRA_NOTE_NEXT",texteliste.get(i));
+                editIntent.putExtra("EXTRA_NOTE_TEXT",texteliste.get(i));
                 editIntent.putExtra("EXTRA_NOTE_FILE",dateienliste.get(i));
                 startActivity(editIntent);
 

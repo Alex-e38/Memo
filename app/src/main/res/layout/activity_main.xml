@@ -71,58 +71,38 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="8dp"
         android:text="REC"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionbar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="244dp"
-        android:text="STP"
+        android:layout_marginTop="8dp"
+        android:text="Play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/actionbar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-
-    <com.devlomi.record_view.RecordButton
-        android:id="@+id/record_button"
+    <Button
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_mic"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:src="@drawable/ic_mic_white" />
+        android:layout_marginTop="40dp"
+        android:text="SPEICHERN"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
-    <com.devlomi.record_view.RecordView
-        android:id="@+id/record_view"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_toLeftOf="@id/record_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:slide_to_cancel_arrow="@drawable/ic_keyboard_arrow_left"
-        app:slide_to_cancel_margin_right="10dp"
-        app:slide_to_cancel_text="Slide To Cancel">
-
-    </com.devlomi.record_view.RecordView>
 
 </android.support.constraint.ConstraintLayout>

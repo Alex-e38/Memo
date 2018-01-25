@@ -3,6 +3,8 @@
     package="com.example.bmrsqd.memo">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,19 +20,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ViewNotes_Activity"
             android:label="Memo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".EditNotesActivity"
             android:label="Memo"
+            android:parentActivityName=".ViewNotes_Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".EditAudioActivity"
+            android:label="@string/title_activity_edit_audio"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:parentActivityName=".ViewNotes_Activity"></activity>
-
-
     </application>
 
 </manifest>

@@ -6,5 +6,6 @@
     <string name="delete">Delete</string>
     <string name="share">Share</string>
     <string name="MainTextViewMemo">Gib ein Memo ein</string>
-    <string name="MainTextViewAudio">Nimm ein Sprachmemo auf</string>
+    <string name="MainTextViewAudio">Halte den REC Button um eine Sprachnotiz aufzunehmen</string>
+    <string name="title_activity_edit_audio">Sprachaufnahmen</string>
 </resources>

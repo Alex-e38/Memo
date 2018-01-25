@@ -50,9 +50,9 @@ public class EditNotesActivity extends AppCompatActivity {
 
         editText2 = (EditText) findViewById(R.id.editText2);
 
-        if (getIntent().hasExtra("EXTRA_NOTE_NEXT") && getIntent().hasExtra("EXTRA_NOTE_FILE")) {
+        if (getIntent().hasExtra("EXTRA_NOTE_TEXT") && getIntent().hasExtra("EXTRA_NOTE_FILE")) {
 
-            notetext = getIntent().getStringExtra("EXTRA_NOTE_NEXT");
+            notetext = getIntent().getStringExtra("EXTRA_NOTE_TEXT");
             notefile = (File) getIntent().getExtras().get("EXTRA_NOTE_FILE");
 
 
