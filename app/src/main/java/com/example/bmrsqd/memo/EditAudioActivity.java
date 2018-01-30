@@ -62,6 +62,10 @@ public class EditAudioActivity extends AppCompatActivity {
                 if (getIntent().hasExtra("EXTRA_AUDIO_FILE")) {
 
                     audioFile = (File) getIntent().getExtras().get("EXTRA_AUDIO_FILE");
+                    if (mPlayer!=null && mPlayer.isPlaying()){
+                        stopPlaying();
+                    }
+
                     startPlaying();
 
                 }

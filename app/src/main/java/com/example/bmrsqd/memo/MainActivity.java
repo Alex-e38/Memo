@@ -173,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                if (mPlayer!=null && mPlayer.isPlaying()){
+                    stopPlaying();
+                }
+
                 startPlaying();
 
             }
@@ -182,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
         SaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (mPlayer!=null && mPlayer.isPlaying()){
+                    stopPlaying();
+                }
 
                 String dir = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Memos/Audio/";
                 File file = new File(dir, "audio.mp4");
