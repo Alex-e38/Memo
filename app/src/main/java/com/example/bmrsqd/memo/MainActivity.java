@@ -157,15 +157,26 @@ public class MainActivity extends AppCompatActivity {
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP){
 
                     int check = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO);
-                    if (check == PackageManager.PERMISSION_GRANTED){
+                    if (mRecorder!=null){
 
-                        stopRecording();
+                        try {
+                            stopRecording();
+                        }catch(RuntimeException ex){
+                            //kek
+                        }
                     }
 
 
                 }
 
                 return false;
+            }
+        });
+
+        RecordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
