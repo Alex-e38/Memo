@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.os.Build;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -71,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
         if (check == PackageManager.PERMISSION_DENIED) {
 
             Toast.makeText(getApplicationContext(), "Zugriff auf den Speicher wird benötigt.", Toast.LENGTH_SHORT).show();
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+            if (Build.VERSION.SDK_INT >=23) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+            }
         }
 
 
@@ -95,7 +98,10 @@ public class MainActivity extends AppCompatActivity {
                 if (check == PackageManager.PERMISSION_DENIED) {
 
                     Toast.makeText(getApplicationContext(), "Zugriff auf den Speicher wird benötigt.", Toast.LENGTH_SHORT).show();
-                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+
+                    if (Build.VERSION.SDK_INT >=23) {
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+                    }
                 }
 
                 if (!ordner.exists()) {
@@ -128,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecordBtn = (Button) findViewById(R.id.button2);
         mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        mFileName += "/Memos/Audio/audio.mp4";
+        mFileName += "/Memos/Audio/audio.m4a";
 
         PlayBtn = (Button) findViewById(R.id.button3);
         SaveBtn = (Button) findViewById(R.id.button4);
@@ -147,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
                     int check = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO);
 
                     if (check == PackageManager.PERMISSION_DENIED) {
-                        requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1025);
+                        if (Build.VERSION.SDK_INT >=23) {
+                            requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1025);
+                        }
                     } else {
                         startRecording();
                     }
@@ -204,8 +212,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 String dir = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Memos/Audio/";
-                File file = new File(dir, "audio.mp4");
-                File file2 = new File(dir, "audio_"+System.currentTimeMillis()+".mp4");
+                File file = new File(dir, "audio.m4a");
+                File file2 = new File(dir, "audio_"+System.currentTimeMillis()+".m4a");
                 file.renameTo(file2);
             }
         });
@@ -218,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mRecorder.setOutputFile(mFileName);
-        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
         //mRecorder.setAudioEncoder(MediaRecorder.getAudioSourceMax());
         mRecorder.setAudioEncodingBitRate(128000);
         mRecorder.setAudioSamplingRate(44100);
@@ -312,7 +320,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else {
                 Toast.makeText(getApplicationContext(), "Zugriff auf den Speicher wird benötigt.", Toast.LENGTH_SHORT).show();
-                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+                if (Build.VERSION.SDK_INT >=23) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1024);
+                }
             }
 
         }

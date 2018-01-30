@@ -1,7 +1,9 @@
 package com.example.bmrsqd.memo;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,7 +27,6 @@ public class EditAudioActivity extends AppCompatActivity {
     String audioName;
     TextView label;
     File audioFile;
-    File audioNameFile;
     Button playBtn;
     Button stopBtn;
     MediaPlayer mPlayer;
@@ -122,7 +123,23 @@ public class EditAudioActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_share) {
+            share();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void share() {
+
+        String sharePath=audioName;
+        Uri uri = Uri.parse("file://"+sharePath);
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("audio/audio/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(intent, "Share"));
     }
 
     private void deleteAudio() {
