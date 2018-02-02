@@ -8,4 +8,5 @@
     <string name="MainTextViewMemo">Gib ein Memo ein</string>
     <string name="MainTextViewAudio">Halte den REC Button um eine Sprachnotiz aufzunehmen</string>
     <string name="title_activity_edit_audio">Sprachaufnahmen</string>
+    <string name="text_activity_edit_notes">Drücke Zurück um alle Änderungen zu speichern</string>
 </resources>
